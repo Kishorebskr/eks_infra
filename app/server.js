@@ -1,9 +1,13 @@
 const http = require("http");
-const port = 3000;  // ✅ match Kubernetes service targetPort
+
+// ✅ Use port 3000 to match your Kubernetes Service
+const port = 3000;
 
 http.createServer((req, res) => {
   res.writeHead(200, {"Content-Type": "text/plain"});
   res.end("Hello from EKS test-app!\n");
-}).listen(port, "0.0.0.0", () => {   // ✅ must bind to 0.0.0.0
+})
+// ✅ Bind to 0.0.0.0 so it listens on all interfaces (not just localhost)
+.listen(port, "0.0.0.0", () => {
   console.log(`Server running on port ${port}`);
 });
