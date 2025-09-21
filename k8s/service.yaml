@@ -8,5 +8,6 @@ spec:
   selector:
     app: test-app
   ports:
-  - port: 80
-    targetPort: 80
+    - port: 80        # Service port exposed inside cluster
+      targetPort: 3000  # ✅ must match containerPort in your Deployment
+
